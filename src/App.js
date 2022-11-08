@@ -8,7 +8,7 @@ export const App = () => {
   return (
 
       <Data>
-      <Root/>
+        <Root/>
       </Data>
    
   )

@@ -58,9 +58,7 @@ export const Home = () => {
                         <td>{item.descricao}</td>
                         <td>{item.valorUnitario}</td>
                         <td><img src={item.imagem}/></td>
-
-                        <Link to={`/carrinho`}>
-                        
+                        <Link to={`/carrinho`}>                        
                         <td><button onClick={() => {adicionarLista(item)}}>Adicionar ao carrinho</button></td>
                        
                         </Link>

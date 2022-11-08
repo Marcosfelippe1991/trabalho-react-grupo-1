@@ -10,12 +10,12 @@ export const Data = (props) => {
 
     ])
 
-    const adicionarLista = (produto) => {
-        const itemObject = [...lista];
-        const item = itemObject.find((p) => p.idProduto === produto.idProduto);
+    const adicionarItem = (produto) => {
+        const listaProduto = [...lista];
+        const item = listaProduto.find((p) => p.idProduto === produto.idProduto);
         if (!item) {
 
-          itemObject.push({
+          listaProduto.push({
             id: produto.idProduto,
             imagemUrl: produto.imagemUrl,
             nome: produto.nome,
@@ -24,49 +24,45 @@ export const Data = (props) => {
             quantidade: 1,
             qtdEstoque: produto.qtdEstoque,
 
-
           });
         } 
 
-        setLista(itemObject);
+        setLista(listaProduto);
 
       }
 
-
       const aumentarItem = (produto) =>{
-        const itemObject = [...lista];
-        const item = itemObject.find((p) => p.idProduto === produto.idProduto);
+        const listaProduto = [...lista];
+        const item = listaProduto.find((p) => p.idProduto === produto.idProduto);
 
         if (item) {
           item.quantidade = item.quantidade + 1;
-          setLista(itemObject);
+          setLista(listaProduto);
 
         }
        }
 
        const diminuirItem = (produto) =>{
-        const itemObject = [...lista];
-        const item = itemObject.find((p) => p.idProduto === produto.idProduto);
+        const listaProduto = [...lista];
+        const item = listaProduto.find((p) => p.idProduto === produto.idProduto);
 
         if (item ) {
           item.quantidade = item.quantidade - 1;
-          setLista(itemObject);
+          setLista(listaProduto);
 
         }
        }
 
-       function removalItem(produto) {
-        const itemObject = [...lista];
-        const arrayFiltrado = itemObject.filter((p) => p.idProduto !== produto.idProduto);
+       function excluirItem(produto) {
+        const listaProduto = [...lista];
+        const arrayFiltrado = listaProduto.filter((p) => p.idProduto !== produto.idProduto);
 
         setLista(arrayFiltrado);
       }
 
-
     return(
 
-
-        <DataContext.Provider value={{lista,adicionarLista, aumentarItem,diminuirItem,removalItem}}>
+        <DataContext.Provider value={{lista,adicionarItem, aumentarItem,diminuirItem,excluirItem}}>
             {props.children}
         </DataContext.Provider>
 
